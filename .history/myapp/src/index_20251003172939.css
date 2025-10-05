@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+
+html,body,#root{
+    margin: 110;
+    padding: 0;
+}
