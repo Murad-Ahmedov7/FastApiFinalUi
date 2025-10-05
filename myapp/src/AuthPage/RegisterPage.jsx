@@ -1,34 +1,46 @@
 export default function RegisterPage() {
-  return (
-    <div className="min-h-screen  flex items-center justify-center p-5  bg-gradient-to-br from-red-500 to-black">
-      <div className="w-full max-w-md border-4 border-red-700 p-10 rounded-4xl ">
-        <h1 className="text-3xl font-semibold text-center mb-8">Register</h1>
 
-        <label className="block text-lg font-bold mb-1">Username</label>
+  const inputStyle="w-full p-4 mb-4 border border-gray-300 rounded-lg bg-white  focus:ring-4 focus:ring-blue-500 focus:outline-none"
+
+  return (
+    <div className="flex items-center justify-center  h-screen w-screen relative">
+      <img
+        src="/images/registerlogin.jpg"
+        alt="Şirkət loqosu"
+        className="w-full h-full object-cover"
+      />
+
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-md"></div>
+
+
+      <div className="w-full absolute max-w-md p-10 rounded-3xl border border-red-600/10 bg-red-600/10  shadow-lg">
+        <h1 className="text-3xl font-semibold text-center mb-8 text-white">Register</h1>
+
+        <label className=" text-lg font-bold text-white mb-1">Username</label>
         <input
           type="text"
           placeholder="Enter username"
-          className="w-full p-4 mb-4 border border-gray-300 rounded-lg bg-white focus:outline-none"
-        />
+          className={inputStyle}
+          />
 
-        
-        <label className="block text-lg font-bold mb-1">Email</label>
+        <label className="text-lg font-bold mb-1 text-white">Email</label>
         <input
           type="text"
           placeholder="Enter email"
-          className="w-full p-4 mb-4 border border-gray-300 rounded-lg bg-white focus:outline-none"
-        />
+         className={inputStyle}        
+         />
 
-        <label className="block text-lg font-bold mb-1">Password</label>
-        <div className="flex items-center border border-gray-300 rounded-lg bg-white mb-6">
+        <label className=" text-lg font-bold mb-1 text-white">Password</label>
+        <div className="flex items-center border border-gray-300 rounded-lg bg-white mb-6  focus-within:ring-4 focus-within:ring-blue-400
+">
           <input
             type="password"
             placeholder="Enter password"
-            className="flex-1 p-4 rounded-l-lg focus:outline-none"
+            disabled
+            className="flex-1 p-4 rounded-l-lg focus:outline-none "
           />
           <button className="px-4 text-blue-600 font-bold">Show</button>
         </div>
-
 
         <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
           Sign up
@@ -38,6 +50,20 @@ export default function RegisterPage() {
           Already have an account? Login
         </p>
       </div>
+
+      <div className="flex absolute top-9/12 gap-3">
+   <button className="text-white w-30    bg-gradient-to-r from-red-300 via-red-500 to-red-400 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2  ">
+
+          Admin
+        </button>
+
+             <button className="text-white w-30 bg-gradient-to-r from-red-300 via-red-500 to-red-400 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-nd px-5 py-2.5 text-center me-2 mb-2 ">
+
+         User
+        </button>
+        
+      </div>
+         
     </div>
   );
 }
