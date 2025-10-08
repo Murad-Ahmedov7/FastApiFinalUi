@@ -1,0 +1,36 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import API_URL from "../baseUrl";
+
+export default function Product() {
+    const getToken = localStorage.getItem("token");
+
+    const [prodList, setProdList] = useState([])
+
+    const rows = [
+  { id: 1, name: 'Murad', age: 25 },
+  { id: 2, name: 'Ali', age: 30 },
+];
+
+//     useEffect(() => {
+//         const getAllProd =async () => {
+
+// const res = await axios.get(`${API_URL}/admin/products`, {
+//   headers: {
+//     Authorization: `Bearer ${localStorage.getItem("token")}`
+//   }
+// });
+//             const data = res.data
+
+//             console.log(data)
+//         }
+//         getAllProd()
+//     }, [])
+
+    if (!getToken) {
+        console.log("not found a single token")
+    }
+    return (
+
+    )
+}
