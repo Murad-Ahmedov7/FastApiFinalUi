@@ -3,9 +3,13 @@ import RegisterPage from "./AuthPage/RegisterPage";
 import LoginPage from "./AuthPage/LoginPage";
 
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import Product from "../AdminPage/Product";
-import Sidebar from "../AdminPage/Sidebar";
-import AddProduct from "../AdminPage/AddProduct";
+import Product from "./AdminPage/Product";
+import Sidebar from "./AdminPage/Sidebar";
+import AddProduct from "./AdminPage/AddProduct";
+import UpdateProduct from "./AdminPage/UpdateProduct";
+import UserProduct from "./UserPage/UserProduct";
+import Basket from "./UserPage/Basket";
+
 
 
 function AppContent() {
@@ -29,7 +33,9 @@ function AppContent() {
           <Route path="/admin/login" element={<LoginPage />} />
           <Route path="/admin/products" element={<Product />} />
           <Route path="/admin/products/add" element={<AddProduct />} />
-
+          <Route path="/admin/products/update/:id" element={<UpdateProduct/>} />
+          <Route path="/user/products" element={<UserProduct/>} />
+          <Route path='user/basket' element={<Basket/>} />
         </Routes>
       </div>
     </div>
