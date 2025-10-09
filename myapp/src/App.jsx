@@ -10,7 +10,7 @@ import AddProduct from "../AdminPage/AddProduct";
 
 function AppContent() {
   const location = useLocation();
-  const hideSidebar = location.pathname.includes("/login") || location.pathname.includes("/register");
+  const hideSidebar = location.pathname.includes("/login") || location.pathname.includes("/register") ||location.pathname===("/");
 
   return (
     <div className="flex overflow-y-hidden ">

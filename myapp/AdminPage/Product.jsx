@@ -72,7 +72,7 @@ export default function Product() {
         <div>
        <div className="mb-4 flex justify-end mr-4">
 
-        <Link   to='/admin/products/add' className="text-white w-30   bg-gradient-to-r from-red-300 via-red-500 to-red-400 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2">
+        <Link   to='/admin/products/add' className="text-white w-30   bg-gradient-to-r from-red-300 via-red-500 to-red-400 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-md px-5 py-2.5 text-center mt-3">
           Add
         </Link>
       </div>
