@@ -5,6 +5,22 @@ import API_URL from "../../baseUrl";
 export default function UserProduct() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [quantities, setQuantities] = useState({}); 
+
+
+   const increaseQty = (id) => {
+    setQuantities((prev) => ({
+      ...prev,
+      [id]: (prev[id] || 1) + 1,
+    }));
+  };
+
+  const decreaseQty = (id) => {
+    setQuantities((prev) => ({
+      ...prev,
+      [id]: prev[id] > 1 ? prev[id] - 1 : 1,
+    }));
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -31,10 +47,35 @@ export default function UserProduct() {
   }, []);
 
   // Səbətə əlavə funksiyası
-  const addToBasket = (product) => {
-    alert(`${product.name} səbətə əlavə olundu!`);
-    // gələcəkdə buraya backendə POST request əlavə edə bilərsən
-  };
+  async function addToBasket(product) {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        alert("Zəhmət olmasa əvvəlcə daxil olun.");
+        return;
+      }
+
+      const payload = {
+        product_id: product.id,
+        quantity: quantities[product.id] || 1,
+      };
+
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/user/basket/items/",
+        payload,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      alert(`${product.name} səbətə əlavə olundu (${payload.quantity} ədəd).`);
+      console.log("Basket response:", response.data);
+    } catch (error) {
+      if (error.response)
+        alert(error.response.data.detail || "Səbətə əlavə edilmədi");
+      else alert("Şəbəkə xətası");
+    }
+  }
 
   return (
     <div className="relative h-screen bg-gray-100 w-screen overflow-y-auto xl:overflow-hidden ">
@@ -83,6 +124,26 @@ export default function UserProduct() {
               <div className="mt-auto flex justify-between items-center mb-4">
                 <p className="font-semibold">Price: ${product.price}</p>
                 <p className="font-semibold">Qty: {product.quantity}</p>
+              </div>
+
+              
+              {/* Qty artır/azalt bölməsi */}
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <button
+                  onClick={() => decreaseQty(product.id)}
+                  className="bg-white text-black font-bold w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-200 transition"
+                >
+                  −
+                </button>
+                <span className="text-lg font-semibold">
+                  {quantities[product.id] || 1}
+                </span>
+                <button
+                  onClick={() => increaseQty(product.id)}
+                  className="bg-white text-black font-bold w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-200 transition"
+                >
+                  +
+                </button>
               </div>
 
               {/* Add to Basket düyməsi */}
