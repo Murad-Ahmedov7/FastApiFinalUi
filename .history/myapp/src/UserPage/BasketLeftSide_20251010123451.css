@@ -1,0 +1,11 @@
+@media (min-width: 2000px) {
+  .basket-left-side {
+   width: 1300px;
+  }
+}
+
+@media (min-width: 2300px) {
+  .basket-left-side {
+   width: 1700px;
+  }
+}

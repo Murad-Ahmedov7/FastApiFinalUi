@@ -1,0 +1,5 @@
+.basket-left-side {
+  width: calc(1300px + ((100vw - 2000px) / 100) * 100);
+  /* width = 1300px + (ekran eni - 2000px) / 100 * 100 */
+  max-width: 2300px;
+}

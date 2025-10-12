@@ -1,0 +1,5 @@
+@media (min-width: 2000px) {
+  .basket-left-side {
+   display: flex:1;
+  }
+}

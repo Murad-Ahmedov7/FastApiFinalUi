@@ -1,0 +1,3 @@
+import { DEFAULT_GRID_AUTOSIZE_OPTIONS } from "@mui/x-data-grid";
+
+DEFAULT_GRID_AUTOSIZE_OPTIONS
