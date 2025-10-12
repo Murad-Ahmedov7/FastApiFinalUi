@@ -13,7 +13,7 @@ export default function Sidebar() {
                     transition-all duration-300">
       <div className="mb-6 text-center">
         <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-black bg-clip-text text-transparent">
-          {role === "admin" ? "Admin Sidebar" : "User Sidebar"}
+          {role === "admin" ? "Admin " : "User "}
         </h1>
       </div>
 

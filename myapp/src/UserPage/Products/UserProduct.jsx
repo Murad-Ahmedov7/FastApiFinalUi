@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function UserProduct() {
   const [products, setProducts] = useState([]);
-  const [basketItems, setBasketItems] = useState([]); 
+  const [basketItems, setBasketItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
 
@@ -16,19 +16,18 @@ export default function UserProduct() {
 
   // ✅ Məhsulu səbətə əlavə et
   const handleAddToBasket = async (productId) => {
-  try {
-    await axios.post(
-      `${API_URL}/user/basket/items/`,
-      { product_id: productId, quantity: 1 }, // quantity default 1
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
+    try {
+      await axios.post(
+        `${API_URL}/user/basket/items/`,
+        { product_id: productId, quantity: 1 }, // quantity default 1
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
 
-    setBasketItems((prev) => [...prev, { product_id: productId }]);
-  } catch (err) {
-    console.error("Səbətə əlavə xətası:", err);
-  }
-};
-
+      setBasketItems((prev) => [...prev, { product_id: productId }]);
+    } catch (err) {
+      console.error("Səbətə əlavə xətası:", err);
+    }
+  };
 
   // ✅ Məhsul və səbət məlumatlarını çək
   useEffect(() => {
@@ -81,28 +80,32 @@ export default function UserProduct() {
           const added = isAdded(product.id);
 
           return (
-              <motion.div
+            <motion.div
               key={product.id}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-  className="bg-gradient-to-br from-red-500 to-black text-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col justify-between pt-4"
+              className="bg-gradient-to-br from-red-500 to-black text-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col justify-between pt-4"
             >
-          <img 
-                  src={
-                    product.image
-                      ? product.imagea
-                      : product.name === "laptop"
-                      ? "/images/laptop.png"
-                      : "https://i02.appmifile.com/976_operatorx_operatorx_opx/23/02/2024/c4866f7bdd20c6ed7acf6082417dd340.png?thumb=1&w=500&q=85"
-                  }
+              <img
+                src={
+                  product.image
+                    ? product.imagea
+                    : product.name === "laptop"
+                    ? "/images/laptop.png"
+                    : "https://i02.appmifile.com/976_operatorx_operatorx_opx/23/02/2024/c4866f7bdd20c6ed7acf6082417dd340.png?thumb=1&w=500&q=85"
+                }
                 alt={product.name}
-                className="xl:w-full xl:h-62  md:w-[100%] md:h-60 object-cover"
+                className={`ml-1 object-cover 
+                 md:w-[100%] md:h-60 
+                 xl:w-[100%] ${product.name === "laptop" ? "xl:h-90 xl:mt-[45px]" : "xl:h-120"}`}
               />
 
               <div className="p-4 flex flex-col gap-2">
                 <h2 className="text-lg font-semibold">{product.name}</h2>
-                <p className="text-gray-200 text-sm line-clamp-3">{product.description}</p>
+                <p className="text-gray-200 text-sm line-clamp-3">
+                  {product.description}
+                </p>
                 <p className="font-bold text-lg">{product.price} ₼</p>
 
                 <motion.button

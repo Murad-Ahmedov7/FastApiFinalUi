@@ -73,7 +73,7 @@ export default function UpdateProduct() {
   };
 
   return (
-    <div className=" admin-products-wide w-screen  xl:w-full 2xl:w-full min-h-screen flex justify-center items-center p-4 xl:ml-[60%] 2xl:ml-[67%] ">
+    <div className=" admin-products-wide w-screen  xl:w-full 2xl:w-full min-h-screen flex justify-center items-center p-4  ">
       <div className="w-full max-w-2xl bg-white p-6 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold mb-6 text-center">Add Product</h2>
 
